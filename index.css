@@ -319,12 +319,22 @@ footer {
 
     .landing-grid {
         grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+
+    .landing-container {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    .landing-logo {
+        max-width: 180px;
     }
 }
 
 /* Landing Page Styles */
 .landing-container {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
