@@ -90,12 +90,56 @@
             const phone = document.getElementById('phone').value;
             const notes = document.getElementById('notes').value;
 
+            // --- CONFIGURACIÓN SHEETDB (Google Sheets) ---
+            // Cuando crees tu cuenta en SheetDB.io, pega aquí tu "API URL"
+            const sheetDbUrl = 'https://sheetdb.io/api/v1/2bw18xrb9lc36';
+
+            console.log('Enviando datos a Excel:', {
+                "Fecha_Registro": new Date().toLocaleString(),
+                "Nombre": name,
+                "Fecha_Reserva": date,
+                "Hora": time,
+                "Personas": guests,
+                "Telefono": phone,
+                "Notas": notes
+            });
+
+            // Enviamos los datos al Excel primero
+            fetch(sheetDbUrl, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    data: [
+                        {
+                            "Fecha_Registro": new Date().toLocaleString(),
+                            "Nombre": name,
+                            "Fecha_Reserva": date,
+                            "Hora": time,
+                            "Personas": guests,
+                            "Telefono": phone,
+                            "Notas": notes
+                        }
+                    ]
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Respuesta de SheetDB:', data);
+                    if (data.created === 1) {
+                        console.log('¡Éxito! Fila creada en el Excel.');
+                    }
+                })
+                .catch(error => console.error('Error de conexión con SheetDB:', error));
+
             const whatsappNumber = '34674931086';
             const message = `Hola! Me gustaría hacer una reserva:%0A%0A*Nombre:* ${name}%0A*Fecha:* ${date}%0A*Hora:* ${time}%0A*Personas:* ${guests}%0A*Teléfono:* ${phone}%0A*Notas:* ${notes}`;
 
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
-            alert('¡Gracias! Te estamos redirigiendo a WhatsApp para confirmar los detalles.');
+            alert('¡Gracias! Tus datos se han guardado y ahora te redirigimos a WhatsApp para confirmar.');
             window.location.href = whatsappUrl;
         });
     </script>
