@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Mesa - La Birra de Brian</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Volver</a>
+            <img src="logo.png" alt="La Birra de Brian Logo" id="logo">
+            <h1>LA BIRRA DE BRIAN</h1>
+            <p class="tagline">Tu Punto de Quedada</p>
+        </div>
+    </header>
+
+    <main class="landing-container" style="height: auto; padding-top: 0;">
+        <div class="social-header">
+            <h2>RESERVA TU MESA</h2>
+            <p class="tagline">Asegura tu sitio en el mejor ambiente de Gamonal</p>
+        </div>
+
+        <div class="form-container">
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="name">Nombre Completo</label>
+                    <input type="text" id="name" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="date">Fecha</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Hora</label>
+                    <select id="time" required>
+                        <option value="19:30">19:30</option>
+                        <option value="20:00">20:00</option>
+                        <option value="20:30">20:30</option>
+                        <option value="21:00">21:00</option>
+                        <option value="21:30">21:30</option>
+                        <option value="22:00">22:00</option>
+                        <option value="22:30">22:30</option>
+                        <option value="23:00">23:00</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Número de Personas</label>
+                    <input type="number" id="guests" min="1" max="20" value="2" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono de Contacto</label>
+                    <input type="tel" id="phone" required placeholder="Ej: 600 000 000">
+                </div>
+                <div class="form-group">
+                    <label for="notes">Notas especiales (Alergias, cumpleaños...)</label>
+                    <textarea id="notes" rows="3"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Confirmar Reserva</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p><i class="fas fa-map-marker-alt"></i> Plaza Roma 11, Gamonal - Burgos</p>
+            <p><i class="fas fa-clock"></i> Mar-Dom: 19:30 - 00:00</p>
+            <div class="delivery-badge">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Glovo_logo.svg/1200px-Glovo_logo.svg.png"
+                    alt="Glovo">
+                <span>Pide por Glovo</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('booking-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('¡Gracias! Tu solicitud de reserva ha sido enviada. Te confirmaremos por teléfono en breve.');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+
+</html>

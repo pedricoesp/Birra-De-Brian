@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacer Evento - La Birra de Brian</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Volver</a>
+            <img src="logo.png" alt="La Birra de Brian Logo" id="logo">
+            <h1>LA BIRRA DE BRIAN</h1>
+            <p class="tagline">Tu Punto de Quedada</p>
+        </div>
+    </header>
+
+    <main class="landing-container" style="height: auto; padding-top: 0;">
+        <div class="social-header">
+            <h2>CELEBRA TU EVENTO CON NOSOTROS</h2>
+            <p class="tagline">Cumpleaños, despedidas y eventos privados en el mejor ambiente</p>
+        </div>
+
+        <div class="menu-grid" style="max-width: 900px; margin: 0 auto 4rem;">
+            <div class="menu-item" style="cursor: default;">
+                <div class="item-header"><span class="item-name">CUMPLEAÑOS</span></div>
+                <div class="item-desc">Zona reservada, picoteo personalizado y la mejor música para tu día especial.
+                </div>
+            </div>
+            <div class="menu-item" style="cursor: default;">
+                <div class="item-header"><span class="item-name">EVENTOS PRIVADOS</span></div>
+                <div class="item-desc">¿Necesitas el local para algo grande? Consúltanos disponibilidad y tarifas
+                    especiales.</div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>CUÉNTANOS TU IDEA</h3>
+            <form id="event-form" style="margin-top: 2rem;">
+                <div class="form-group">
+                    <label for="ename">Nombre / Empresa</label>
+                    <input type="text" id="ename" required>
+                </div>
+                <div class="form-group">
+                    <label for="etype">Tipo de Evento</label>
+                    <select id="etype" required>
+                        <option value="cumple">Cumpleaños</option>
+                        <option value="despedida">Despedida</option>
+                        <option value="corporativo">Empresa</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="eguests">Nº de Invitados (Aprox)</label>
+                    <input type="number" id="eguests" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Detalles del evento</label>
+                    <textarea id="message" rows="4" placeholder="¿Qué tienes en mente?"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Solicitar Información</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p><i class="fas fa-map-marker-alt"></i> Plaza Roma 11, Gamonal - Burgos</p>
+            <p><i class="fas fa-clock"></i> Mar-Dom: 19:30 - 00:00</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('event-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('¡Recibido! Nos pondremos en contacto contigo para organizar el mejor evento posible.');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+
+</html>
