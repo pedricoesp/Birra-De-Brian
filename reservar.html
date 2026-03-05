@@ -70,19 +70,33 @@
         <div class="footer-content">
             <p><i class="fas fa-map-marker-alt"></i> Plaza Roma 11, Gamonal - Burgos</p>
             <p><i class="fas fa-clock"></i> Mar-Dom: 19:30 - 00:00</p>
-            <div class="delivery-badge">
+            <a href="https://glovoapp.com/es/es/burgos/stores/la-birra-de-brian-burgos" class="delivery-badge"
+                target="_blank">
                 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Glovo_logo.svg/1200px-Glovo_logo.svg.png"
                     alt="Glovo">
                 <span>Pide por Glovo</span>
-            </div>
+            </a>
         </div>
     </footer>
 
     <script>
         document.getElementById('booking-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            alert('¡Gracias! Tu solicitud de reserva ha sido enviada. Te confirmaremos por teléfono en breve.');
-            window.location.href = 'index.html';
+
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const guests = document.getElementById('guests').value;
+            const phone = document.getElementById('phone').value;
+            const notes = document.getElementById('notes').value;
+
+            const whatsappNumber = '34674931086';
+            const message = `Hola! Me gustaría hacer una reserva:%0A%0A*Nombre:* ${name}%0A*Fecha:* ${date}%0A*Hora:* ${time}%0A*Personas:* ${guests}%0A*Teléfono:* ${phone}%0A*Notas:* ${notes}`;
+
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+            alert('¡Gracias! Te estamos redirigiendo a WhatsApp para confirmar los detalles.');
+            window.location.href = whatsappUrl;
         });
     </script>
 </body>
