@@ -90,12 +90,52 @@
             const guests = document.getElementById('eguests').value;
             const details = document.getElementById('message').value;
 
+            // --- CONFIGURACIÓN SHEETDB (Google Sheets) ---
+            // Cuando crees tu cuenta en SheetDB.io, pega aquí tu "API URL"
+            const sheetDbUrl = 'https://sheetdb.io/api/v1/2bw18xrb9lc36';
+
+            console.log('Enviando datos de evento a Excel:', {
+                "Fecha_Registro": new Date().toLocaleString(),
+                "Nombre_Empresa": name,
+                "Tipo_Evento": type,
+                "Invitados": guests,
+                "Detalles": details
+            });
+
+            // Enviamos los datos al Excel primero
+            fetch(sheetDbUrl, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    data: [
+                        {
+                            "Fecha_Registro": new Date().toLocaleString(),
+                            "Nombre_Empresa": name,
+                            "Tipo_Evento": type,
+                            "Invitados": guests,
+                            "Detalles": details
+                        }
+                    ]
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Respuesta de SheetDB:', data);
+                    if (data.created === 1) {
+                        console.log('¡Éxito! Evento guardado en el Excel.');
+                    }
+                })
+                .catch(error => console.error('Error de conexión con SheetDB:', error));
+
             const whatsappNumber = '34674931086';
             const message = `Hola! Quiero organizar un evento:%0A%0A*Nombre/Empresa:* ${name}%0A*Tipo:* ${type}%0A*Invitados:* ${guests}%0A*Detalles:* ${details}`;
 
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
-            alert('¡Recibido! Te estamos redirigiendo a WhatsApp para concretar tu evento.');
+            alert('¡Recibido! Guardamos tu solicitud y te redirigimos a WhatsApp.');
             window.location.href = whatsappUrl;
         });
     </script>
